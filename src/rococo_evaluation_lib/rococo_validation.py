@@ -122,6 +122,7 @@ class RococoValidation:
         )
 
         for i, face in enumerate(self.dataset.all_faces):
+            print(f"Processing face {i + 1} of {self.dataset.n_all_faces}")
             face_path = self.dataset.face_abspath(face)
             embedding = self._compute_embedding_for_file(face_path)
             assert (
@@ -258,10 +259,14 @@ class RococoValidation:
         )
 
     def validate(self) -> ValidationResults:
+        print("Starting validation...")
+        print("Computing face embeddings...")
         self._compute_face_embeddings()
+        print("Computing sequence similarities...")
         self._compute_all_sequence_similarities()
         assert self.frame_seq_similarities is not None
 
+        print("Computing validation results for different thresholds...")
         thresholds = list(np.linspace(0.0, 1.00, 101))
         fars = []
         frrs = []
