@@ -4,7 +4,7 @@ from typing import List, Union
 
 import cv2
 import numpy as np
-from rococo_evaluation_lib.face_recognition_system import FaceRecognitionSystem
+from rococo_evaluation_lib.face_recognition_system import FaceRecognitionException, FaceRecognitionSystem
 from rococo_evaluation_lib.rococo_dataset import Frame, RococoDataset
 from rococo_evaluation_lib.sequence_match_algorithm import sequence_match
 
@@ -104,7 +104,8 @@ class RococoValidation:
                 self.embedding_size,
             ), f"Unexpected embedding shape: {embedding.shape}, expected: ({self.embedding_size},)"
             return embedding
-        except Exception as e:
+        except FaceRecognitionException as e:
+            print(f"WARNING Failed to compute embedding for {filename}: {e}")
             return None
 
     def _compute_face_embeddings(self):
