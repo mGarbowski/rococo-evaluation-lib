@@ -1,6 +1,6 @@
 [project]
 name = "rococo-evaluation-lib"
-version = "0.1.1"
+version = "0.1.2"
 description = "Evaluation procedure for a face recognition system"
 authors = [{ name = "mgarbowski", email = "mikolaj.garbowski@gmail.com" }]
 dependencies = ["numpy>=1.24.4", "opencv-python>=4.8.1.78"]
