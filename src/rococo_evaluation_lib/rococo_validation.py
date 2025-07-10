@@ -7,6 +7,7 @@ import numpy as np
 from rococo_evaluation_lib.face_recognition_system import FaceRecognitionException, FaceRecognitionSystem
 from rococo_evaluation_lib.rococo_dataset import Frame, RococoDataset
 from rococo_evaluation_lib.sequence_match_algorithm import sequence_match
+from rococo_evaluation_lib.validation_results import ValidationResults
 
 
 @dataclass(frozen=True)
@@ -28,13 +29,6 @@ class SingleThresholdResult:
         if self.n_total == 0:
             return 0.0
         return self.n_false_rejects / self.n_total
-
-
-@dataclass
-class ValidationResults:
-    threshold: List[float]
-    far: List[float]
-    frr: List[float]
 
 
 class MatchResult(Enum):
