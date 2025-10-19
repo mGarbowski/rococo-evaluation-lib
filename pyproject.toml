@@ -12,13 +12,6 @@ license = { text = "MIT" }
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
-
-[tool.pdm]
-distribution = true
-
-[tool.pdm.scripts]
-test = { env = { PYTHONPATH = "src" }, cmd = "pytest tests/" }
-
 [dependency-groups]
 dev = ["pytest>=8.3.5"]
 
